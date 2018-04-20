@@ -20,7 +20,7 @@ import java.util.Map;
 @WebServlet(name = "addDevice", urlPatterns = "/addDevice")
 public class addDevice extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//
+//test2
         Map<String, Object> map = new HashMap<>();
         boolean isValid = false;
         int id = -1;
