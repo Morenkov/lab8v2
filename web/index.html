@@ -1,0 +1,59 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>STORE</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+<body>
+<button id="viewBtn" class="w3-button w3-khaki" type="submit">Load/Update</button>
+<br>
+<button id="deleteZeroBtn" class="w3-button w3-green hide-me" type="submit">Delete uneral products</button>
+<br>
+<button id="initBtn" class="w3-button w3-blue hide-me" type="submit">Restore Database</button>
+<br>
+<button id="popularBtn" class="w3-button w3-yellow hide-me" type="submit">Load Popular</button>
+<br>
+
+<table id="tableView" class="w3-table-all w3-hoverable hide-me" align="left" border="2" cellpadding="1" cellspacing="1"
+       style="width: 500px;">
+    <caption class="w3-teal">Goods</caption>
+    <thead class="w3-green">
+    <tr class="w3-green">
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">PCS</th>
+        <th scope="col">Tags</th>
+        <th scope="col">Edit</th>
+    </tr>
+    </thead>
+    <tbody id="viewTableBody">
+    </tbody>
+</table>
+
+<br>
+
+<table id="tablePop" class="w3-table-all w3-hoverable hide-me" align="left" border="2" cellpadding="1" cellspacing="1"
+       style="width: 500px;">
+    <caption class="w3-teal">Popular Categories</caption>
+    <thead class="w3-green">
+    <tr class="w3-green">
+        <th scope="col">Count</th>
+        <th scope="col">Category</th>
+    </tr>
+    </thead>
+    <tbody id="popTableBody">
+    </tbody>
+</table>
+<br>
+<span align="left" id="responsesTab" class="w3-blue hide-me"></span>
+
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<!--<script type="text/javascript" src="js/jquery.form.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery.min.js"></script>-->
+
+<script type="text/javascript" src="js/ajax.js"></script>
+
+</body>
+</html>
