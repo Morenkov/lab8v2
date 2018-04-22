@@ -3,6 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="ru.dev.lab8.logic.Product" %>
 
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -18,6 +19,7 @@
 <table id="tableView" class="<%--hide-me--%> w3-table-all w3-hoverable" align="left" border="2" cellpadding="1" cellspacing="1" style="width: 500px;">
     <caption>ТОВАРЫ</caption>
     <thead>
+
     <tr class="w3-green">
         <th scope="col">ID</th>
         <th scope="col">Name</th>

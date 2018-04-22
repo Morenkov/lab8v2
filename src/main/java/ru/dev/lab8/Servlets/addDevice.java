@@ -20,7 +20,7 @@ import java.util.Map;
 @WebServlet(name = "addDevice", urlPatterns = "/addDevice")
 public class addDevice extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//test2
+
         Map<String, Object> map = new HashMap<>();
         boolean isValid = false;
         int id = -1;
@@ -44,18 +44,17 @@ public class addDevice extends HttpServlet {
                 isValid = true;
                 map.put("id", id);
                 map.put("name", name);
-                map.put("count", count);
+                map.put("coun", count);
                 map.put("categories", categories);
                 map.put("isValid", isValid);
+
+                DBL.INSTANCE.addToDB(product);
 
                 map.put("answer", "Device {" + product.getId() + " " +
                         product.getName() + " " + product.getCount() + " " + product.getCategories() + "} Added!");
 
-                DBL.INSTANCE.addToDB(product);
-
                 System.out.println("Device {" + product.getId() + " " +
                         product.getName() + " " + product.getCount() + " " + product.getCategories() + "} Added!");
-
             }
 
         } catch (NumberFormatException | JsonSyntaxException e) {

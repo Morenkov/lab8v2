@@ -18,7 +18,6 @@ public class deleteDevice extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-//            DBL.INSTANCE.addToDB(new Product(id, "", 0, ""));
             DBL.INSTANCE.deleteById(id);
             response.getWriter().print("Successfully removed!");
             response.getWriter().flush();

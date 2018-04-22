@@ -11,7 +11,6 @@ var tableBody = document.getElementById("viewTableBody");
 var responsesHTML = document.getElementById("responsesTab");
 
 
-
 //-----------
 
 viewBtn.addEventListener("click", function () {
@@ -30,16 +29,15 @@ viewBtn.addEventListener("click", function () {
         popularBtn.classList.remove("hide-me");
         deleteZeroBtn.disabled = false;
         initBtn.disabled = false;
-        viewBtn.disabled = false
+        viewBtn.disabled = false;
         popularBtn.disabled = false;
     };
 
     myRequest.onerror = function () {
         console.log("Connection error");
     };
-    myRequest.open('POST', '/loadData', true);
+    myRequest.open('POST', '/loadData');
     myRequest.send();
-
 });
 
 popularBtn.addEventListener("click", function () {
@@ -93,7 +91,7 @@ deleteZeroBtn.addEventListener("click", function () {
     myRequest.onerror = function () {
         console.log("Connection error");
     };
-    myRequest.open('POST', '/deleteZero', true);
+    myRequest.open('POST', '/deleteZero');
     myRequest.send();
 });
 
@@ -133,7 +131,7 @@ function renderResponsesHTML(myData) {
 function renderTableHTML(data) {
     var htmlString = "";
     for (i = 0; i < data.length; i++) {
-        htmlString += "<tr id=\"device-tr-" + data[i].id + "\" class=\"w3-light-grey w3-hover-blue\" valign=\"top\">";
+        htmlString += "<tr id=\"device-tr-" + data[i].id + "\" class='w3-light-grey w3-hover-blue' valign=\"top\">";
         htmlString += "<td id=\"device-td-id-" + data[i].id + "\">" + data[i].id + "</td>";
         htmlString += "<td id=\"device-td-name-" + data[i].id + "\">" + data[i].name + "</td>";
         htmlString += "<td id=\"device-td-count-" + data[i].id + "\">" + data[i].count + "</td>";
@@ -155,7 +153,6 @@ function renderTableHTML(data) {
 
     tableBody.innerHTML = "";
     tableBody.insertAdjacentHTML('beforeend', htmlString);
-    initFormSubmit();
     tableView.classList.remove("hide-me")
 }
 
@@ -184,7 +181,7 @@ function deleteProduct(i) {
             responsesHTML.classList.remove("hide-me");
         }
     });
-    viewBtn.click();
+    setTimeout(viewBtn.click(), 200);
 }
 
 function addProduct() {
@@ -194,56 +191,14 @@ function addProduct() {
             id: document.getElementById("newId").value,
             name: document.getElementById("newName").value,
             count: document.getElementById("newCount").value,
-            categories: document.getElementById("newCategories").value,
+            categories: document.getElementById("newCategories").value
         },
         datatype: 'json',
         success: function (data) {
-            // renderResponsesHTML(data);
             setTimeout(renderResponsesHTML(data.answer), 200);
-            // renderResponsesHTML(data.answer);
         }
     });
-    viewBtn.click();
-}
-
-function initFormSubmit() {
-    addNewDeviceBtn = document.getElementById("addNewDeviceBtn");
-    addNewDeviceBtn.addEventListener("click", function () {
-
-        var newId = document.getElementById("newId");
-        var newName = document.getElementById("newName");
-        var newCount = document.getElementById("newCount");
-        var newCategories = document.getElementById("newCategories");
-
-        if (validate()) {
-            $('#newDeviceForm').submit(function () {
-                $.ajax({
-                    url: 'addDevice',
-                    type: 'POST',
-                    datatype: 'json',
-                    data: $('#newDeviceForm').serialize(),
-                    success: function (data) {
-                        if (data.isValid) {
-                            renderResponsesHTML(data);
-                            $('responsesTab').slideDown(600);
-                        } else {
-                            alert("Incorrect (Server says)");  //ТОЛЬКО ЕСЛИ КТОТО УМЫШЛЕННО
-                        }
-                    }
-                })
-            });
-        } else {
-            renderResponsesHTML("Invalid Data! (JS says)");
-            responsesHTML.classList.remove("hide-me");
-            console.log("оно работает");
-
-        }
-
-        function validate() {
-            return !((!Number.isInteger(Number(newId))) || (!Number.isInteger(Number(newCount))) ||
-                (newName === "") || (newCategories === ""));
-        }
-    });
+    setTimeout(viewBtn.click(), 200);
 }
 
 function editProduct(i) {

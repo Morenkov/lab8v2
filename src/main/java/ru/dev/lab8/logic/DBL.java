@@ -66,11 +66,6 @@ public class DBL {
 
     public List getFullData() {
         try {
-//         con = DriverManager.getConnection("jdbc:mariadb://localhost:3316/db?" +
-//                         "user=root&password=root");
-//
-//         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db?" +
-//                 "user=root&password=root");
             if (!connection.isClosed()) {
                 System.out.println("Connecton working");
 
